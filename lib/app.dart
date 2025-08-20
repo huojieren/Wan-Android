@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/pages/home_page.dart';
+import 'package:flutter_demo/route/RouteUtils.dart';
+import 'package:flutter_demo/route/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -39,6 +41,9 @@ class MyApp extends StatelessWidget {
               useMaterial3: true,
             ),
             home: HomePage(),
+            navigatorKey: RouteUtils.navigatorKey,
+            onGenerateRoute: Routes.generateRoute,
+            initialRoute: RoutePath.home,
           );
         },
       ),
