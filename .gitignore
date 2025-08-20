@@ -1,0 +1,132 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# 编译和生成的二进制文件
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# 忽略临时文件和系统文件
+.DS_Store
+Thumbs.db
+local.properties
+
+# 忽略日志文件
+*.log
+
+# 忽略用户配置文件
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 忽略依赖包目录
+node_modules/
+vendor/
+__pycache__/
+
+# 忽略Python虚拟环境
+venv/
+env/
+
+# 忽略Java构建文件夹
+target/
+bin/
+out/
+
+# 忽略其他语言构建文件夹
+build/
+dist/
+.tmp/
+coverage/
+.gradle/
+
+# 忽略JavaScript打包输出
+public/
+*.js.map
+
+# 忽略操作系统生成的文件
+*.iml
+*.ipch
+*.pdb
+
+# 忽略环境变量文件
+.env
+.env.*
+
+# 忽略数据库文件
+*.sqlite
+*.db
+
+# 忽略压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# 忽略Markdown临时文件（如Typora生成的文件）
+*.assets/
+
+# 除了需要共享的特定配置文件
+!.idea/modules.xml
+!.idea/vcs.xml
+!.idea/codeStyles
+
+# 忽略IDE临时文件
+#.idea/
+.vscode/
+
+# Linux系统文件
+*~
+
+# 忽略临时文件和备份文件
+*.bak
+*.tmp
+*.swp
+*.swo
