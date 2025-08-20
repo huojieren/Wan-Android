@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/datas/home_banner_data.dart';
+import 'package:flutter_demo/pages/home/home_vm.dart';
 import 'package:flutter_demo/route/RouteUtils.dart';
 import 'package:flutter_demo/route/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +16,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<BannerItemData>? bannerList;
+
+  @override
+  void initState() {
+    super.initState();
+    initBannerData();
+  }
+
+  void initBannerData() async {
+    bannerList = await HomeViewModel.getBanner();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,13 +57,25 @@ class _HomePageState extends State<HomePage> {
       height: 150.h,
       width: double.infinity, // 无限撑满屏幕
       child: Swiper(
-        itemCount: 3,
+        // 不显示页面指示器（小圆点）
+        indicatorLayout: PageIndicatorLayout.NONE,
+        // 自动播放
+        autoplay: true,
+        // 指定指示器样式为默认样式
+        pagination: const SwiperPagination(),
+        // 指定控制按钮为默认样式
+        control: const SwiperControl(),
+        itemCount: bannerList?.length ?? 0,
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.all(15.r),
+            // margin: EdgeInsets.all(15.r),
             height: 150.h,
             width: double.infinity, // 无限撑满屏幕
             color: Colors.lightBlue,
+            child: Image.network(
+              bannerList?[index].imagePath ?? "",
+              fit: BoxFit.cover,
+            ),
           );
         },
       ),

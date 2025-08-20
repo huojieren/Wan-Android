@@ -17,6 +17,8 @@ dependencies:
   oktoast: ^3.3.1
   # banner 轮播图组件
   flutter_swiper_view: ^1.1.8
+  # 网络请求
+  dio: ^5.9.0
 
 dev_dependencies:
   flutter_test:
