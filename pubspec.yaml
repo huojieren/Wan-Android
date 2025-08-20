@@ -19,6 +19,8 @@ dependencies:
   flutter_swiper_view: ^1.1.8
   # 网络请求
   dio: ^5.9.0
+  # 状态管理
+  provider: 6.1.5+1
 
 dev_dependencies:
   flutter_test:
