@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/datas/home_list_data.dart';
 import 'package:flutter_demo/pages/home/home_vm.dart';
+import 'package:flutter_demo/repository/datas/home_list_data.dart';
 import 'package:flutter_demo/route/RouteUtils.dart';
 import 'package:flutter_demo/route/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     viewModel.getBanner();
-    viewModel.getHomeList();
+    viewModel.initListData();
   }
 
   @override
@@ -137,29 +137,31 @@ class _HomePageState extends State<HomePage> {
                 Text(author, style: TextStyle(color: Colors.black)),
                 Expanded(child: SizedBox()),
                 Text(
-                  item?.niceShareDate ?? "",
+                  item.niceShareDate ?? "",
                   style: TextStyle(color: Colors.black, fontSize: 12.sp),
                 ),
                 SizedBox(width: 5.w),
-                Text(
-                  "置顶",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                (item.type?.toInt() == 1)
+                    ? Text(
+                        "置顶",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    : SizedBox(),
               ],
             ),
             SizedBox(height: 5.h),
             Text(
-              item?.title ?? "",
+              item.title ?? "",
               style: TextStyle(color: Colors.black, fontSize: 14.sp),
             ),
             SizedBox(height: 5.h),
             Row(
               children: [
                 Text(
-                  item?.chapterName ?? "",
+                  item.chapterName ?? "",
                   style: TextStyle(color: Colors.green, fontSize: 12.sp),
                 ),
                 Expanded(child: SizedBox()),

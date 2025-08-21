@@ -4,9 +4,9 @@ class HomeBannerListData {
   HomeBannerListData.fromJson(dynamic json) {
     if (json is List) {
       bannerList = [];
-      json.forEach((element) {
+      for (var element in json) {
         bannerList?.add(HomeBannerData.fromJson(element));
-      });
+      }
     }
   }
 }

@@ -23,6 +23,7 @@ class HomeListData {
     size = json['size'];
     total = json['total'];
   }
+
   num? curPage;
   List<HomeListItemData>? datas;
   num? offset;
@@ -43,6 +44,19 @@ class HomeListData {
     map['size'] = size;
     map['total'] = total;
     return map;
+  }
+}
+
+class HomeTopListData {
+  List<HomeListItemData>? topList;
+
+  HomeTopListData.fromJson(dynamic json) {
+    if (json is List) {
+      topList = [];
+      for (var element in json) {
+        topList?.add(HomeListItemData.fromJson(element));
+      }
+    }
   }
 }
 
@@ -127,6 +141,7 @@ class HomeListItemData {
     visible = json['visible'];
     zan = json['zan'];
   }
+
   bool? adminAdd;
   String? apkLink;
   num? audit;

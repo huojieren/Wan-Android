@@ -1,34 +1,33 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_demo/datas/home_banner_data.dart';
-import 'package:flutter_demo/datas/home_list_data.dart';
-import 'package:flutter_demo/http/dio_instance.dart';
+import 'package:flutter_demo/repository/api.dart';
+import 'package:flutter_demo/repository/datas/home_banner_data.dart';
+import 'package:flutter_demo/repository/datas/home_list_data.dart';
 
 class HomeViewModel with ChangeNotifier {
-  List<HomeBannerData?>? bannerList;
-  List<HomeListItemData>? listData;
+  List<HomeBannerData?>? bannerList = [];
+  List<HomeListItemData>? listData = [];
 
   Future getBanner() async {
-    Response response = await DioInstance.instance().get(path: "banner/json");
-    HomeBannerListData bannerData = HomeBannerListData.fromJson(response.data);
-    if (bannerData.bannerList != null) {
-      bannerList = bannerData.bannerList;
-    } else {
-      bannerList = [];
-    }
+    List<HomeBannerData?>? fetchedBannerList = await Api.instance.getBanner();
+    bannerList = fetchedBannerList ??= [];
     notifyListeners();
   }
 
+  Future initListData() async {
+    await getTopList();
+    await getHomeList();
+  }
+
+  Future getTopList() async {
+    List<HomeListItemData>? fetchedTopList = await Api.instance
+        .getHomeTopList();
+    listData?.clear();
+    listData?.addAll(fetchedTopList ??= []);
+  }
+
   Future getHomeList() async {
-    Response response = await DioInstance.instance().get(
-      path: "article/list/0/json",
-    );
-    HomeListData homeData = HomeListData.fromJson(response.data);
-    if (homeData.datas?.isNotEmpty == true) {
-      listData = homeData.datas;
-    } else {
-      listData = [];
-    }
+    List<HomeListItemData>? fetchedHomeList = await Api.instance.getHomeList();
+    listData?.addAll(fetchedHomeList ??= []);
     notifyListeners();
   }
 }
