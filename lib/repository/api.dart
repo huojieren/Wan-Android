@@ -14,9 +14,9 @@ class Api {
     return bannerData.bannerList;
   }
 
-  Future<List<HomeListItemData>?> getHomeList() async {
+  Future<List<HomeListItemData>?> getHomeList(String pageCount) async {
     Response response = await DioInstance.instance().get(
-      path: "article/list/0/json",
+      path: "article/list/$pageCount/json",
     );
     HomeListData homeData = HomeListData.fromJson(response.data);
     return homeData.datas;

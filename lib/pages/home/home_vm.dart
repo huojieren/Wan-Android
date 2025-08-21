@@ -6,6 +6,7 @@ import 'package:flutter_demo/repository/datas/home_list_data.dart';
 class HomeViewModel with ChangeNotifier {
   List<HomeBannerData?>? bannerList = [];
   List<HomeListItemData>? listData = [];
+  int pageCount = 0;
 
   Future getBanner() async {
     List<HomeBannerData?>? fetchedBannerList = await Api.instance.getBanner();
@@ -13,21 +14,45 @@ class HomeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future initListData() async {
-    await getTopList();
-    await getHomeList();
+  Future initListData(bool loadMore, {ValueChanged<bool>? callback}) async {
+    if (loadMore) {
+      pageCount++;
+    } else {
+      pageCount = 0;
+      listData?.clear();
+    }
+    getTopList(loadMore).then((fetchedTopList) {
+      if (!loadMore) {
+        listData?.addAll(fetchedTopList ??= []);
+      }
+      getHomeList(loadMore).then((fetchedHomeList) {
+        listData?.addAll(fetchedHomeList ??= []);
+        notifyListeners();
+        callback?.call(loadMore);
+      });
+    });
   }
 
-  Future getTopList() async {
+  Future<List<HomeListItemData>?> getTopList(bool loadMore) async {
+    if (loadMore) {
+      return [];
+    }
     List<HomeListItemData>? fetchedTopList = await Api.instance
         .getHomeTopList();
-    listData?.clear();
-    listData?.addAll(fetchedTopList ??= []);
+    return fetchedTopList;
   }
 
-  Future getHomeList() async {
-    List<HomeListItemData>? fetchedHomeList = await Api.instance.getHomeList();
-    listData?.addAll(fetchedHomeList ??= []);
-    notifyListeners();
+  Future<List<HomeListItemData>?> getHomeList(bool loadMore) async {
+    List<HomeListItemData>? fetchedHomeList = await Api.instance.getHomeList(
+      "$pageCount",
+    );
+    if (fetchedHomeList != null && fetchedHomeList.isNotEmpty) {
+      return fetchedHomeList;
+    } else {
+      if (loadMore && pageCount > 0) {
+        pageCount--;
+      }
+      return [];
+    }
   }
 }
