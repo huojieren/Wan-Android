@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_demo/http/http_method.dart';
+import 'package:flutter_demo/http/print_log_interceptor.dart';
+import 'package:flutter_demo/http/rsp_interceptor.dart';
 
 class DioInstance {
   static DioInstance? _instance;
@@ -30,6 +32,10 @@ class DioInstance {
       responseType: responseType,
       contentType: contentType,
     );
+    // 添加打印请求返回信息拦截器
+    _dio.interceptors.add(PrintLogInterceptor());
+    // 添加统一返回值处理拦截器
+    _dio.interceptors.add(ResponseInterceptor());
   }
 
   Future<Response> get({

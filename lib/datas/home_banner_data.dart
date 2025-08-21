@@ -1,34 +1,18 @@
-class HomeBannerData {
-  HomeBannerData({this.data, this.errorCode, this.errorMsg});
+class HomeBannerListData {
+  List<HomeBannerData?>? bannerList;
 
-  HomeBannerData.fromJson(dynamic json) {
-    if (json['data'] != null) {
-      data = [];
-      json['data'].forEach((v) {
-        data?.add(BannerItemData.fromJson(v));
+  HomeBannerListData.fromJson(dynamic json) {
+    if (json is List) {
+      bannerList = [];
+      json.forEach((element) {
+        bannerList?.add(HomeBannerData.fromJson(element));
       });
     }
-    errorCode = json['errorCode'];
-    errorMsg = json['errorMsg'];
-  }
-
-  List<BannerItemData>? data;
-  num? errorCode;
-  String? errorMsg;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (data != null) {
-      map['data'] = data?.map((v) => v.toJson()).toList();
-    }
-    map['errorCode'] = errorCode;
-    map['errorMsg'] = errorMsg;
-    return map;
   }
 }
 
-class BannerItemData {
-  BannerItemData({
+class HomeBannerData {
+  HomeBannerData({
     this.desc,
     this.id,
     this.imagePath,
@@ -39,7 +23,7 @@ class BannerItemData {
     this.url,
   });
 
-  BannerItemData.fromJson(dynamic json) {
+  HomeBannerData.fromJson(dynamic json) {
     desc = json['desc'];
     id = json['id'];
     imagePath = json['imagePath'];

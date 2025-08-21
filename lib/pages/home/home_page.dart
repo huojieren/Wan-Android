@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/pages/home/home_list_data.dart';
+import 'package:flutter_demo/datas/home_list_data.dart';
 import 'package:flutter_demo/pages/home/home_vm.dart';
 import 'package:flutter_demo/route/RouteUtils.dart';
 import 'package:flutter_demo/route/routes.dart';
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity, // 无限撑满屏幕
                 color: Colors.lightBlue,
                 child: Image.network(
-                  viewModel.bannerList?[index].imagePath ?? "",
+                  viewModel.bannerList?[index]?.imagePath ?? "",
                   fit: BoxFit.cover,
                 ),
               );
