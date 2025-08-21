@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/pages/home/home_page.dart';
 import 'package:flutter_demo/route/RouteUtils.dart';
 import 'package:flutter_demo/route/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,18 +8,13 @@ import 'package:oktoast/oktoast.dart';
 Size get designSize {
   final firstView = WidgetsBinding.instance.platformDispatcher.views.first;
   // 逻辑短边
-  final logicalShortestSide =
-      firstView.physicalSize.shortestSide / firstView.devicePixelRatio;
+  final logicalShortestSide = firstView.physicalSize.shortestSide / firstView.devicePixelRatio;
   // 逻辑长边
-  final logicalLongestSide =
-      firstView.physicalSize.longestSide / firstView.devicePixelRatio;
+  final logicalLongestSide = firstView.physicalSize.longestSide / firstView.devicePixelRatio;
   // 缩放比例 designSize越小，元素越大
   const scaleFactor = 0.95;
   // 缩放后的逻辑短边和长边
-  return Size(
-    logicalShortestSide * scaleFactor,
-    logicalLongestSide * scaleFactor,
-  );
+  return Size(logicalShortestSide * scaleFactor, logicalLongestSide * scaleFactor);
 }
 
 class MyApp extends StatelessWidget {
@@ -40,10 +34,9 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: HomePage(),
             navigatorKey: RouteUtils.navigatorKey,
             onGenerateRoute: Routes.generateRoute,
-            initialRoute: RoutePath.home,
+            initialRoute: RoutePath.tab,
           );
         },
       ),
