@@ -5,11 +5,13 @@ Widget commonInput({
   String? labelText,
   TextEditingController? controller,
   ValueChanged<String>? onChanged,
+  bool isObscureText = false,
 }) {
   return TextField(
     controller: controller,
     onChanged: onChanged,
     style: TextStyle(color: Colors.white),
+    obscureText: isObscureText,
     cursorColor: Colors.white,
     decoration: InputDecoration(
       enabledBorder: OutlineInputBorder(
