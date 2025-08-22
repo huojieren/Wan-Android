@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/common_ui/smart_refresh/smart_refresh_widget.dart';
 import 'package:flutter_demo/pages/home/home_vm.dart';
-import 'package:flutter_demo/repository/datas/home_list_data.dart';
+import 'package:flutter_demo/repository/data/home_list_data.dart';
 import 'package:flutter_demo/route/RouteUtils.dart';
 import 'package:flutter_demo/route/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

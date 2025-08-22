@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WebViewPage extends StatefulWidget {
-  String title;
+  final String? title;
+  final String? link;
 
-  WebViewPage({super.key, required this.title});
+  const WebViewPage({super.key, this.title, this.link});
 
   @override
   State<StatefulWidget> createState() {
@@ -31,18 +32,14 @@ class _WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title ?? "")),
+      appBar: AppBar(title: Text(title ?? "")),
       body: SafeArea(
         child: Container(
           child: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Container(
-              width: 200.w,
-              height: 50.w,
-              child: Text(widget.title ?? ""),
-            ),
+            child: Container(width: 200.w, height: 50.w, child: Text(widget.title ?? "")),
           ),
         ),
       ),

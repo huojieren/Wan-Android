@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_demo/repository/api.dart';
-import 'package:flutter_demo/repository/datas/home_banner_data.dart';
-import 'package:flutter_demo/repository/datas/home_list_data.dart';
+import 'package:flutter_demo/repository/data/home_banner_data.dart';
+import 'package:flutter_demo/repository/data/home_list_data.dart';
 
 class HomeViewModel with ChangeNotifier {
   List<HomeBannerData?>? bannerList = [];
