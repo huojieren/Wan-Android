@@ -37,15 +37,12 @@ class HomeViewModel with ChangeNotifier {
     if (loadMore) {
       return [];
     }
-    List<HomeListItemData>? fetchedTopList = await Api.instance
-        .getHomeTopList();
+    List<HomeListItemData>? fetchedTopList = await Api.instance.getHomeTopList();
     return fetchedTopList;
   }
 
   Future<List<HomeListItemData>?> getHomeList(bool loadMore) async {
-    List<HomeListItemData>? fetchedHomeList = await Api.instance.getHomeList(
-      "$pageCount",
-    );
+    List<HomeListItemData>? fetchedHomeList = await Api.instance.getHomeList("$pageCount");
     if (fetchedHomeList != null && fetchedHomeList.isNotEmpty) {
       return fetchedHomeList;
     } else {
@@ -53,6 +50,14 @@ class HomeViewModel with ChangeNotifier {
         pageCount--;
       }
       return [];
+    }
+  }
+
+  Future collectOrNot(bool isCollect, String? id, int index) async {
+    bool? result = await Api.instance.collectOrNot(isCollect, id);
+    if (result == true) {
+      listData?[index].collect = isCollect;
+      notifyListeners();
     }
   }
 }

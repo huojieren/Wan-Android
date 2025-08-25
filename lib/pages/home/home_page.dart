@@ -61,9 +61,7 @@ class _HomePageState extends State<HomePage> {
                 refreshOrLoad(false);
               });
             },
-            child: SingleChildScrollView(
-              child: Column(children: [_banner(), _homeListView()]),
-            ),
+            child: SingleChildScrollView(child: Column(children: [_banner(), _homeListView()])),
           ),
         ),
       ),
@@ -109,7 +107,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, viewModel, child) {
         return ListView.builder(
           itemBuilder: (context, index) {
-            return _listItemView(viewModel.listData?[index]);
+            return _listItemView(viewModel.listData?[index], index);
           },
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
@@ -119,7 +117,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _listItemView(HomeListItemData? item) {
+  Widget _listItemView(HomeListItemData? item, int index) {
     String author;
     if (item?.author?.isNotEmpty == true) {
       author = item!.author ?? "";
@@ -129,20 +127,11 @@ class _HomePageState extends State<HomePage> {
 
     return GestureDetector(
       onTap: () {
-        RouteUtils.pushForNamed(
-          context,
-          RoutePath.webViewPage,
-          arguments: {"title": "value"},
-        );
+        RouteUtils.pushForNamed(context, RoutePath.webViewPage, arguments: {"title": "value"});
       },
       child: Container(
         margin: EdgeInsets.only(top: 5.r, bottom: 5.r, left: 10.r, right: 10.r),
-        padding: EdgeInsets.only(
-          top: 15.r,
-          bottom: 10.r,
-          left: 10.r,
-          right: 10.r,
-        ),
+        padding: EdgeInsets.only(top: 15.r, bottom: 10.r, left: 10.r, right: 10.r),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black12, width: 0.5.r),
           borderRadius: BorderRadius.all(Radius.circular(10.r)),
@@ -172,10 +161,7 @@ class _HomePageState extends State<HomePage> {
                 (item.type?.toInt() == 1)
                     ? Text(
                         "置顶",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
                       )
                     : SizedBox(),
               ],
@@ -193,10 +179,17 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(color: Colors.green, fontSize: 12.sp),
                 ),
                 Expanded(child: SizedBox()),
-                Image.asset(
-                  "assets/images/img_collect_grey.png",
-                  width: 30.r,
-                  height: 30.r,
+                GestureDetector(
+                  onTap: () {
+                    viewModel.collectOrNot(!item.collect!, "${item.id}", index);
+                  },
+                  child: Image.asset(
+                    item.collect ?? false
+                        ? "assets/images/img_collect.png"
+                        : "assets/images/img_collect_grey.png",
+                    width: 30.r,
+                    height: 30.r,
+                  ),
                 ),
               ],
             ),

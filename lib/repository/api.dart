@@ -85,10 +85,37 @@ class Api {
     return AuthData.fromJson(response.data);
   }
 
+  // 登出
+  Future<bool?> logout() async {
+    try {
+      await DioInstance.instance().get(path: "user/logout/json");
+      return true;
+    } catch (e) {
+      // 拦截器会处理各种错误情况并可能抛出异常
+      return false;
+    }
+  }
+
   // 获取体系数据
   Future<List<KnowledgeListData?>?> getKnowledgeList() async {
     Response response = await DioInstance.instance().get(path: "tree/json");
     KnowledgeData knowledgeData = KnowledgeData.fromJson(response.data);
     return knowledgeData.list;
+  }
+
+  // 收藏
+  Future<bool?> collectOrNot(bool isCollect, String? id) async {
+    try {
+      if (isCollect) {
+        await DioInstance.instance().post(path: "lg/collect/$id/json");
+      } else {
+        await DioInstance.instance().post(path: "lg/uncollect_originId/$id/json");
+      }
+      // 如果能执行到这里，说明请求成功（拦截器已处理错误情况）
+      return true;
+    } catch (e) {
+      // 拦截器会处理各种错误情况并可能抛出异常
+      return false;
+    }
   }
 }
