@@ -4,6 +4,7 @@ import 'package:wan_android/repository/data/auth_data.dart';
 import 'package:wan_android/repository/data/common_website_data.dart';
 import 'package:wan_android/repository/data/home_banner_data.dart';
 import 'package:wan_android/repository/data/home_list_data.dart';
+import 'package:wan_android/repository/data/knowledge_list_data.dart';
 import 'package:wan_android/repository/data/search_hot_key_data.dart';
 
 class Api {
@@ -82,5 +83,12 @@ class Api {
       queryParameters: {"username": username, "password": password},
     );
     return AuthData.fromJson(response.data);
+  }
+
+  // 获取体系数据
+  Future<List<KnowledgeListData?>?> getKnowledgeList() async {
+    Response response = await DioInstance.instance().get(path: "tree/json");
+    KnowledgeData knowledgeData = KnowledgeData.fromJson(response.data);
+    return knowledgeData.list;
   }
 }
