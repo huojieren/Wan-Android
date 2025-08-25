@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/route/RouteUtils.dart';
-import 'package:flutter_demo/route/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:wan_android/route/RouteUtils.dart';
+import 'package:wan_android/route/routes.dart';
 
 /// 设计尺寸
 Size get designSize {

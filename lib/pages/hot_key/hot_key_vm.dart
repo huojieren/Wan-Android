@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_demo/repository/api.dart';
-import 'package:flutter_demo/repository/data/common_website_data.dart';
-import 'package:flutter_demo/repository/data/search_hot_key_data.dart';
+import 'package:wan_android/repository/api.dart';
+import 'package:wan_android/repository/data/common_website_data.dart';
+import 'package:wan_android/repository/data/search_hot_key_data.dart';
 
 class HotKeyViewModel with ChangeNotifier {
   List<CommonWebsiteData>? websiteList;

@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_demo/http/dio_instance.dart';
-import 'package:flutter_demo/repository/data/auth_data.dart';
-import 'package:flutter_demo/repository/data/common_website_data.dart';
-import 'package:flutter_demo/repository/data/home_banner_data.dart';
-import 'package:flutter_demo/repository/data/home_list_data.dart';
-import 'package:flutter_demo/repository/data/search_hot_key_data.dart';
+import 'package:wan_android/http/dio_instance.dart';
+import 'package:wan_android/repository/data/auth_data.dart';
+import 'package:wan_android/repository/data/common_website_data.dart';
+import 'package:wan_android/repository/data/home_banner_data.dart';
+import 'package:wan_android/repository/data/home_list_data.dart';
+import 'package:wan_android/repository/data/search_hot_key_data.dart';
 
 class Api {
   static Api instance = Api._();

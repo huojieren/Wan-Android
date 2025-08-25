@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/common_ui/common_style.dart';
-import 'package:flutter_demo/pages/auth/auth_vm.dart';
-import 'package:flutter_demo/pages/auth/register_page.dart';
-import 'package:flutter_demo/pages/tab_page.dart';
-import 'package:flutter_demo/route/RouteUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
+import 'package:wan_android/common_ui/common_style.dart';
+import 'package:wan_android/pages/auth/auth_vm.dart';
+import 'package:wan_android/pages/auth/register_page.dart';
+import 'package:wan_android/pages/tab_page.dart';
+import 'package:wan_android/route/RouteUtils.dart';
 
 class LoginPage extends StatefulWidget {
   @override

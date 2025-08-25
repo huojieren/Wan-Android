@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/pages/auth/login_page.dart';
-import 'package:flutter_demo/pages/auth/register_page.dart';
-import 'package:flutter_demo/pages/tab_page.dart';
-import 'package:flutter_demo/pages/web_view_page.dart';
+import 'package:wan_android/pages/auth/login_page.dart';
+import 'package:wan_android/pages/auth/register_page.dart';
+import 'package:wan_android/pages/tab_page.dart';
+import 'package:wan_android/pages/web_view_page.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {

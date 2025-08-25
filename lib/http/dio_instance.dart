@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_demo/http/http_method.dart';
-import 'package:flutter_demo/http/print_log_interceptor.dart';
-import 'package:flutter_demo/http/rsp_interceptor.dart';
+import 'package:wan_android/http/http_method.dart';
+import 'package:wan_android/http/interceptor/cookies_interceptor.dart';
+import 'package:wan_android/http/interceptor/print_log_interceptor.dart';
+import 'package:wan_android/http/interceptor/rsp_interceptor.dart';
 
 class DioInstance {
   static DioInstance? _instance;
@@ -32,6 +33,8 @@ class DioInstance {
       responseType: responseType,
       contentType: contentType,
     );
+    // 添加Cookie拦截器
+    _dio.interceptors.add(CookiesInterceptor());
     // 添加打印请求返回信息拦截器
     _dio.interceptors.add(PrintLogInterceptor());
     // 添加统一返回值处理拦截器
@@ -49,11 +52,7 @@ class DioInstance {
       queryParameters: param,
       options:
           options ??
-          Options(
-            method: HttpMethod.GET,
-            receiveTimeout: _defaultTime,
-            sendTimeout: _defaultTime,
-          ),
+          Options(method: HttpMethod.GET, receiveTimeout: _defaultTime, sendTimeout: _defaultTime),
       cancelToken: cancelToken,
     );
   }
@@ -71,11 +70,7 @@ class DioInstance {
       queryParameters: queryParameters,
       options:
           options ??
-          Options(
-            method: HttpMethod.POST,
-            receiveTimeout: _defaultTime,
-            sendTimeout: _defaultTime,
-          ),
+          Options(method: HttpMethod.POST, receiveTimeout: _defaultTime, sendTimeout: _defaultTime),
       cancelToken: cancelToken,
     );
   }

@@ -1,132 +1,165 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
+######################
+# 操作系统文件
+######################
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
 .DS_Store
-.atom/
-.build/
-.buildlog/
-.history
-.svn/
-.swiftpm/
-migrate_working_dir/
+.AppleDouble
+.LSOverride
+Icon
+._*
+.metadata_never_index
+.metadata_never_index_unless_rootfs
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
+# Linux
+*~
+
+######################
+# 编辑器和IDE
+######################
+# VSCode
+.vscode/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# JetBrains (IntelliJ IDEA, Android Studio, PyCharm, etc.)
 .idea/
+*.iml
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# Eclipse
+.project
+.classpath
+.cproject
+.settings/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
+# Xcode
+*.xcworkspace
+*.xcodeproj
+xcuserdata/
+
+# Visual Studio
+.vs/
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.code-workspace
+
+######################
+# 编译输出与依赖
+######################
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# C/C++
+*.o
+*.obj
+*.so
+*.exe
+*.out
+*.dSYM/
+*.pdb
+
+# Node.js
+node_modules/
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# Android
+/app/release/
+.android/
+
+# Flutter & Dart
 .dart_tool/
+.flutter-plugins
 .flutter-plugins-dependencies
+.packages
 .pub-cache/
 .pub/
 /build/
+**/doc/api/
 /coverage/
+/ios/Flutter/.last_build_id
 
-# Symbolication related
+# Flutter build outputs
 app.*.symbols
-
-# Obfuscation related
 app.*.map.json
-
-# Android Studio will place build artifacts here
 /android/app/debug
 /android/app/profile
 /android/app/release
 
-# 编译和生成的二进制文件
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
-# 忽略临时文件和系统文件
-.DS_Store
-Thumbs.db
-local.properties
-
-# 忽略日志文件
+######################
+# 日志与临时文件
+######################
 *.log
+*.tmp
+*.temp
+*.swp
+*.swo
 
-# 忽略用户配置文件
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+######################
+# 数据库/缓存/其他工具
+######################
+# Django / Flask
+*.sqlite3
+db.sqlite3
+instance/
 
-# 忽略依赖包目录
-node_modules/
-vendor/
-__pycache__/
+# Rails
+*.gem
+*.rbc
+*.sass-cache/
+.rspec
+.yarn-integrity
 
-# 忽略Python虚拟环境
-venv/
-env/
+# Terraform
+*.tfstate
+*.tfstate.*
 
-# 忽略Java构建文件夹
-target/
-bin/
-out/
+# Haskell
+*.hi
+*.dyn_hi
+*.dyn_o
 
-# 忽略其他语言构建文件夹
-build/
-dist/
-.tmp/
-coverage/
-.gradle/
+# Lua
+*.luac
 
-# 忽略JavaScript打包输出
-public/
-*.js.map
+# PITest
+report/
 
-# 忽略操作系统生成的文件
-*.iml
-*.ipch
-*.pdb
-
-# 忽略环境变量文件
-.env
-.env.*
-
-# 忽略数据库文件
-*.sqlite
-*.db
-
-# 忽略压缩文件
+######################
+# 其他
+######################
 *.zip
 *.tar.gz
 *.rar
-*.7z
-
-# 忽略Markdown临时文件（如Typora生成的文件）
-*.assets/
-
-# 除了需要共享的特定配置文件
-!.idea/modules.xml
-!.idea/vcs.xml
-!.idea/codeStyles
-
-# 忽略IDE临时文件
-#.idea/
-.vscode/
-
-# Linux系统文件
-*~
-
-# 忽略临时文件和备份文件
-*.bak
-*.tmp
-*.swp
-*.swo
+.atom/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_demo/http/base_model.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:wan_android/http/base_model.dart';
 
 class ResponseInterceptor extends Interceptor {
   @override

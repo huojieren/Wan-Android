@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/common_ui/navigation/navigation_bar_widget.dart';
-import 'package:flutter_demo/pages/home/home_page.dart';
-import 'package:flutter_demo/pages/hot_key/hot_key_page.dart';
-import 'package:flutter_demo/pages/knowledge/knowledge_page.dart';
-import 'package:flutter_demo/pages/personal/personal_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wan_android/common_ui/navigation/navigation_bar_widget.dart';
+import 'package:wan_android/pages/home/home_page.dart';
+import 'package:wan_android/pages/hot_key/hot_key_page.dart';
+import 'package:wan_android/pages/knowledge/knowledge_page.dart';
+import 'package:wan_android/pages/personal/personal_page.dart';
 
 class TabPage extends StatefulWidget {
   const TabPage({super.key});

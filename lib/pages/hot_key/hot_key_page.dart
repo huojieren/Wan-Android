@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/pages/hot_key/hot_key_vm.dart';
-import 'package:flutter_demo/pages/web_view_page.dart';
-import 'package:flutter_demo/repository/data/common_website_data.dart';
-import 'package:flutter_demo/repository/data/search_hot_key_data.dart';
-import 'package:flutter_demo/route/RouteUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:wan_android/pages/hot_key/hot_key_vm.dart';
+import 'package:wan_android/pages/web_view_page.dart';
+import 'package:wan_android/repository/data/common_website_data.dart';
+import 'package:wan_android/repository/data/search_hot_key_data.dart';
+import 'package:wan_android/route/RouteUtils.dart';
 
 class HotKeyPage extends StatefulWidget {
   const HotKeyPage({super.key});

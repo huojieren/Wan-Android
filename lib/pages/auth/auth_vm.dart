@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_demo/constants.dart';
-import 'package:flutter_demo/repository/api.dart';
-import 'package:flutter_demo/repository/data/auth_data.dart';
-import 'package:flutter_demo/utils/sp_utils.dart';
+import 'package:wan_android/constants.dart';
+import 'package:wan_android/repository/api.dart';
+import 'package:wan_android/repository/data/auth_data.dart';
+import 'package:wan_android/utils/sp_utils.dart';
 
 class AuthViewModel with ChangeNotifier {
   RegisterInfo? registerInfo = RegisterInfo();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/http/dio_instance.dart';
+import 'package:wan_android/http/dio_instance.dart';
 
 import 'app.dart';
 

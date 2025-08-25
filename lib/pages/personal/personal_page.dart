@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/pages/auth/login_page.dart';
-import 'package:flutter_demo/route/RouteUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wan_android/pages/auth/login_page.dart';
+import 'package:wan_android/route/RouteUtils.dart';
 
 class PersonalPage extends StatefulWidget {
   const PersonalPage({super.key});
