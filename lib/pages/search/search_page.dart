@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:wan_android/common_ui/smart_refresh/smart_refresh_widget.dart';
 import 'package:wan_android/pages/search/search_vm.dart';
 import 'package:wan_android/utils/route_utils.dart';
 
@@ -16,14 +18,15 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  late TextEditingController controller;
+  late TextEditingController textController;
   SearchViewModel viewModel = SearchViewModel();
+  RefreshController refreshController = RefreshController();
 
   @override
   void initState() {
     super.initState();
-    controller = TextEditingController(text: widget.keyword);
-    viewModel.search(widget.keyword);
+    textController = TextEditingController(text: widget.keyword);
+    viewModel.search(keyword: widget.keyword);
   }
 
   @override
@@ -41,32 +44,51 @@ class _SearchPageState extends State<SearchPage> {
                   RouteUtils.pop(context);
                 },
                 onCancel: () {
-                  controller.clear();
+                  textController.clear();
                   viewModel.clear();
                   FocusScope.of(context).unfocus();
                 },
                 onSubmit: (value) {
-                  viewModel.search(value);
+                  viewModel.search(keyword: value);
                   SystemChannels.textInput.invokeMethod('TextInput.hide');
                 },
               ),
-              Consumer<SearchViewModel>(
-                builder: (context, value, child) {
-                  return Expanded(
-                    child: ListView.builder(
-                      itemCount: value.searchList?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        return _listItem(viewModel.searchList?[index].title, () {});
+              Expanded(
+                child: Consumer<SearchViewModel>(
+                  builder: (context, vm, child) {
+                    return SmartRefreshWidget(
+                      controller: refreshController,
+                      onRefresh: () async {
+                        refreshOrLoad(false);
                       },
-                    ),
-                  );
-                },
+                      onLoading: () async {
+                        refreshOrLoad(true);
+                      },
+                      child: ListView.builder(
+                        itemCount: vm.searchList?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return _listItem(vm.searchList?[index].title, () {});
+                        },
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void refreshOrLoad(bool loadMore) {
+    viewModel.search(keyword: widget.keyword, loadMore: loadMore).then((value) {
+      if (loadMore) {
+        refreshController.loadComplete();
+      } else {
+        refreshController.refreshCompleted();
+      }
+    });
   }
 
   Widget _searchBar({
@@ -91,7 +113,7 @@ class _SearchPageState extends State<SearchPage> {
               child: TextField(
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.search,
-                controller: controller,
+                controller: textController,
                 onSubmitted: onSubmit,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
