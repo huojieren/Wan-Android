@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:wan_android/common_ui/loading.dart';
 import 'package:wan_android/pages/auth/login_page.dart';
 import 'package:wan_android/pages/personal/personal_vm.dart';
+import 'package:wan_android/pages/tab_page.dart';
 import 'package:wan_android/utils/route_utils.dart';
 
 class PersonalPage extends StatefulWidget {
@@ -47,9 +49,11 @@ class _PersonalPageState extends State<PersonalPage> {
                     return SizedBox();
                   }
                   return _settingsItem("退出登录", () {
+                    Loading.showLoading();
                     viewModel.logout((value) {
                       if (value) {
-                        RouteUtils.pushAndRemoveUntil(context, LoginPage());
+                        Loading.dismissAll();
+                        RouteUtils.pushAndRemoveUntil(context, TabPage());
                       }
                     });
                   });

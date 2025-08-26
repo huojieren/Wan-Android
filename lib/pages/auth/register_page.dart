@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android/common_ui/common_style.dart';
+import 'package:wan_android/common_ui/loading.dart';
 import 'package:wan_android/pages/auth/auth_vm.dart';
 import 'package:wan_android/utils/route_utils.dart';
 
@@ -63,8 +64,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   whiteBorderButton(
                     title: "注册",
                     onTap: () {
+                      Loading.showLoading();
                       viewModel.register().then((onValue) {
                         if (onValue == true) {
+                          Loading.dismissAll();
                           showToast("注册成功");
                           RouteUtils.pop(context);
                         }

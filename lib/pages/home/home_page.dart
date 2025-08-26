@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:wan_android/common_ui/loading.dart';
 import 'package:wan_android/common_ui/smart_refresh/smart_refresh_widget.dart';
 import 'package:wan_android/pages/home/home_vm.dart';
 import 'package:wan_android/repository/data/home_list_data.dart';
@@ -32,6 +33,7 @@ class _HomePageState extends State<HomePage> {
         } else {
           refreshController.refreshCompleted();
         }
+        Loading.dismissAll();
       },
     );
   }
@@ -39,8 +41,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    Loading.showLoading();
     viewModel.getBanner();
-    viewModel.initListData(false);
+    refreshOrLoad(false);
   }
 
   @override

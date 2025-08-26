@@ -4,6 +4,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:wan_android/common_ui/loading.dart';
 import 'package:wan_android/common_ui/smart_refresh/smart_refresh_widget.dart';
 import 'package:wan_android/pages/search/search_vm.dart';
 import 'package:wan_android/utils/route_utils.dart';
@@ -26,7 +27,8 @@ class _SearchPageState extends State<SearchPage> {
   void initState() {
     super.initState();
     textController = TextEditingController(text: widget.keyword);
-    viewModel.search(keyword: widget.keyword);
+    refreshOrLoad(false);
+    Loading.showLoading();
   }
 
   @override
@@ -88,6 +90,7 @@ class _SearchPageState extends State<SearchPage> {
       } else {
         refreshController.refreshCompleted();
       }
+      Loading.dismissAll();
     });
   }
 

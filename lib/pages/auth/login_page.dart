@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android/common_ui/common_style.dart';
+import 'package:wan_android/common_ui/loading.dart';
 import 'package:wan_android/pages/auth/auth_vm.dart';
 import 'package:wan_android/pages/auth/register_page.dart';
 import 'package:wan_android/pages/tab_page.dart';
@@ -49,12 +50,14 @@ class _LoginPageState extends State<LoginPage> {
               whiteBorderButton(
                 title: "登录",
                 onTap: () {
+                  Loading.showLoading();
                   viewModel.setLoginInfo(
                     username: usernameController?.text,
                     password: pwdController?.text,
                   );
                   viewModel.login().then((value) {
                     if (value == true) {
+                      Loading.dismissAll();
                       showToast("登录成功");
                       RouteUtils.pushAndRemoveUntil(context, TabPage());
                     }
