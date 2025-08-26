@@ -25,6 +25,8 @@ dependencies:
   pull_to_refresh: ^2.0.0
   # 本地化存储
   shared_preferences: ^2.5.3
+  # html
+  flutter_html: ^3.0.0
 
 dev_dependencies:
   flutter_test:

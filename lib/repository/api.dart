@@ -6,6 +6,7 @@ import 'package:wan_android/repository/data/home_banner_data.dart';
 import 'package:wan_android/repository/data/home_list_data.dart';
 import 'package:wan_android/repository/data/knowledge_detail_list_data.dart';
 import 'package:wan_android/repository/data/knowledge_list_data.dart';
+import 'package:wan_android/repository/data/search_data.dart';
 import 'package:wan_android/repository/data/search_hot_key_data.dart';
 
 class Api {
@@ -131,5 +132,15 @@ class Api {
     );
     var knowledgeDetailData = KnowledgeDetailListData.fromJson(response.data);
     return knowledgeDetailData.datas;
+  }
+
+  // 搜索
+  Future<List<SearchListData>?> searchList(String? pageCount, String? keyword) async {
+    Response response = await DioInstance.instance().post(
+      path: "article/query/$pageCount/json",
+      queryParameters: {"k": keyword},
+    );
+    var searchData = SearchData.fromJson(response.data);
+    return searchData.datas;
   }
 }

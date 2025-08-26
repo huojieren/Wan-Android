@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android/pages/hot_key/hot_key_vm.dart';
+import 'package:wan_android/pages/search/search_page.dart';
 import 'package:wan_android/pages/web_view_page.dart';
 import 'package:wan_android/repository/data/common_website_data.dart';
 import 'package:wan_android/repository/data/search_hot_key_data.dart';
@@ -53,7 +54,16 @@ class _HotKeyPageState extends State<HotKeyPage> {
                           style: TextStyle(fontSize: 14.sp, color: Colors.black),
                         ),
                         Expanded(child: SizedBox()),
-                        Image.asset("assets/images/icon_search.png", width: 30.r, height: 30.r),
+                        GestureDetector(
+                          onTap: () {
+                            RouteUtils.push(context, const SearchPage());
+                          },
+                          child: Image.asset(
+                            "assets/images/icon_search.png",
+                            width: 30.r,
+                            height: 30.r,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -62,7 +72,9 @@ class _HotKeyPageState extends State<HotKeyPage> {
                       return _gridView(
                         false,
                         hotKeyList: viewModel.hotKeyList,
-                        onItemTap: (link) {},
+                        onItemTap: (value) {
+                          RouteUtils.push(context, SearchPage(keyword: value));
+                        },
                       );
                     },
                   ),

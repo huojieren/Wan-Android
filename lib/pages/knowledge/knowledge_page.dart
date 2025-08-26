@@ -18,11 +18,8 @@ class KnowledgePage extends StatefulWidget {
 class _KnowledgePageState extends State<KnowledgePage> {
   KnowledgeViewModel viewModel = KnowledgeViewModel();
 
-  // late RefreshController _refreshController;
-
   @override
   void initState() {
-    // _refreshController = RefreshController();
     super.initState();
     viewModel.getKnowledgeList();
   }
