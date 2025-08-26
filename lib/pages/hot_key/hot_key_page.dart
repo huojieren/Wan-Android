@@ -5,7 +5,7 @@ import 'package:wan_android/pages/hot_key/hot_key_vm.dart';
 import 'package:wan_android/pages/web_view_page.dart';
 import 'package:wan_android/repository/data/common_website_data.dart';
 import 'package:wan_android/repository/data/search_hot_key_data.dart';
-import 'package:wan_android/route/RouteUtils.dart';
+import 'package:wan_android/utils/route_utils.dart';
 
 class HotKeyPage extends StatefulWidget {
   const HotKeyPage({super.key});

@@ -4,6 +4,7 @@ import 'package:wan_android/repository/data/auth_data.dart';
 import 'package:wan_android/repository/data/common_website_data.dart';
 import 'package:wan_android/repository/data/home_banner_data.dart';
 import 'package:wan_android/repository/data/home_list_data.dart';
+import 'package:wan_android/repository/data/knowledge_detail_list_data.dart';
 import 'package:wan_android/repository/data/knowledge_list_data.dart';
 import 'package:wan_android/repository/data/search_hot_key_data.dart';
 
@@ -117,5 +118,18 @@ class Api {
       // 拦截器会处理各种错误情况并可能抛出异常
       return false;
     }
+  }
+
+  // 获取知识体系下的文章
+  Future<List<KnowledgeDetailItemData>?> getKnowledgeListItem(
+    String? pageCount,
+    String? cid,
+  ) async {
+    Response response = await DioInstance.instance().get(
+      path: "article/list/$pageCount/json",
+      param: {"cid": cid},
+    );
+    var knowledgeDetailData = KnowledgeDetailListData.fromJson(response.data);
+    return knowledgeDetailData.datas;
   }
 }

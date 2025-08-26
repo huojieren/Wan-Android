@@ -6,7 +6,8 @@ import 'package:wan_android/common_ui/common_style.dart';
 import 'package:wan_android/pages/auth/auth_vm.dart';
 import 'package:wan_android/pages/auth/register_page.dart';
 import 'package:wan_android/pages/tab_page.dart';
-import 'package:wan_android/route/RouteUtils.dart';
+
+import '../../utils/route_utils.dart';
 
 class LoginPage extends StatefulWidget {
   @override

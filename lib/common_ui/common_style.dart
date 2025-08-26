@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+TextStyle titleTextStyle15 = TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500);
+
+Text normalText(String? text) {
+  return Text(text ?? "", style: titleTextStyle15);
+}
+
 Widget commonInput({
   String? labelText,
   TextEditingController? controller,

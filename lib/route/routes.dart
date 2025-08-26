@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wan_android/pages/auth/login_page.dart';
 import 'package:wan_android/pages/auth/register_page.dart';
+import 'package:wan_android/pages/knowledge/detail/knowledg_detail_tab_page.dart';
 import 'package:wan_android/pages/tab_page.dart';
 import 'package:wan_android/pages/web_view_page.dart';
 
@@ -15,6 +16,8 @@ class Routes {
         return pageRoute(LoginPage(), settings: settings);
       case RoutePath.registerPage:
         return pageRoute(RegisterPage(), settings: settings);
+      case RoutePath.detailKnowledgePage:
+        return pageRoute(KnowledgeDetailsTabPage(), settings: settings);
     }
     return pageRoute(
       Scaffold(
@@ -47,4 +50,5 @@ class RoutePath {
   static const String webViewPage = "/web_view_page";
   static const String loginPage = "/login_page";
   static const String registerPage = "/register_page";
+  static const String detailKnowledgePage = "/detail_knowledge_page";
 }

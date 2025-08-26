@@ -4,7 +4,7 @@ import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android/common_ui/common_style.dart';
 import 'package:wan_android/pages/auth/auth_vm.dart';
-import 'package:wan_android/route/RouteUtils.dart';
+import 'package:wan_android/utils/route_utils.dart';
 
 class RegisterPage extends StatefulWidget {
   @override

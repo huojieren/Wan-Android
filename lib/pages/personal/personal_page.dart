@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android/pages/auth/login_page.dart';
 import 'package:wan_android/pages/personal/personal_vm.dart';
-import 'package:wan_android/route/RouteUtils.dart';
+import 'package:wan_android/utils/route_utils.dart';
 
 class PersonalPage extends StatefulWidget {
   const PersonalPage({super.key});
