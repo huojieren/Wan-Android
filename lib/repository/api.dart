@@ -6,6 +6,7 @@ import 'package:wan_android/repository/data/home_banner_data.dart';
 import 'package:wan_android/repository/data/home_list_data.dart';
 import 'package:wan_android/repository/data/knowledge_detail_list_data.dart';
 import 'package:wan_android/repository/data/knowledge_list_data.dart';
+import 'package:wan_android/repository/data/my_collects_data.dart';
 import 'package:wan_android/repository/data/search_data.dart';
 import 'package:wan_android/repository/data/search_hot_key_data.dart';
 
@@ -106,9 +107,9 @@ class Api {
   }
 
   // 收藏
-  Future<bool?> collectOrNot(bool isCollect, String? id) async {
+  Future<bool?> collectOrNot(bool toCollect, String? id) async {
     try {
-      if (isCollect) {
+      if (toCollect) {
         await DioInstance.instance().post(path: "lg/collect/$id/json");
       } else {
         await DioInstance.instance().post(path: "lg/uncollect_originId/$id/json");
@@ -119,6 +120,16 @@ class Api {
       // 拦截器会处理各种错误情况并可能抛出异常
       return false;
     }
+  }
+
+  // 获取收藏列表
+  Future<List<MyCollectItemData>?> getMyCollects(String pageCount) async {
+    Response rsp = await DioInstance.instance().get(path: "lg/collect/list/$pageCount/json");
+    MyCollectsData? model = MyCollectsData.fromJson(rsp.data);
+    if (model.datas != null && model.datas?.isNotEmpty == true) {
+      return model.datas;
+    }
+    return [];
   }
 
   // 获取知识体系下的文章

@@ -3,7 +3,7 @@ import 'package:wan_android/repository/api.dart';
 import 'package:wan_android/repository/data/search_data.dart';
 
 class SearchViewModel extends ChangeNotifier {
-  List<SearchListData>? searchList = [];
+  List<SearchListData>? searchList;
   int _pageCount = 0;
 
   Future initSearch(String? keyword) async {
