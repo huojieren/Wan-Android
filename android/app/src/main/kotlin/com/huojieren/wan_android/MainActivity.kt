@@ -1,4 +1,4 @@
-package com.huojieren.flutter_demo
+package com.huojieren.wan_android
 
 import io.flutter.embedding.android.FlutterActivity
 
