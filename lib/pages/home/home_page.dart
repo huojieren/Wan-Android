@@ -5,9 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android/common_ui/loading.dart';
 import 'package:wan_android/common_ui/smart_refresh/smart_refresh_widget.dart';
+import 'package:wan_android/common_ui/web/webview_page.dart';
+import 'package:wan_android/common_ui/web/webview_widget.dart';
 import 'package:wan_android/pages/home/home_vm.dart';
 import 'package:wan_android/repository/data/home_list_data.dart';
-import 'package:wan_android/route/routes.dart';
 import 'package:wan_android/utils/route_utils.dart';
 
 class HomePage extends StatefulWidget {
@@ -88,14 +89,26 @@ class _HomePageState extends State<HomePage> {
             control: const SwiperControl(),
             itemCount: viewModel.bannerList?.length ?? 0,
             itemBuilder: (context, index) {
-              return Container(
-                // margin: EdgeInsets.all(15.r),
-                height: 150.h,
-                width: double.infinity, // 无限撑满屏幕
-                color: Colors.lightBlue,
-                child: Image.network(
-                  viewModel.bannerList?[index]?.imagePath ?? "",
-                  fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: () {
+                  RouteUtils.push(
+                    context,
+                    WebViewPage(
+                      webViewType: WebViewType.URL,
+                      loadResource: viewModel.bannerList?[index]?.url ?? "",
+                      showTitle: true,
+                      title: viewModel.bannerList?[index]?.title,
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 150.h,
+                  width: double.infinity, // 无限撑满屏幕
+                  color: Colors.lightBlue,
+                  child: Image.network(
+                    viewModel.bannerList?[index]?.imagePath ?? "",
+                    fit: BoxFit.cover,
+                  ),
                 ),
               );
             },
@@ -130,7 +143,15 @@ class _HomePageState extends State<HomePage> {
 
     return GestureDetector(
       onTap: () {
-        RouteUtils.pushForNamed(context, RoutePath.webViewPage, arguments: {"title": "value"});
+        RouteUtils.push(
+          context,
+          WebViewPage(
+            loadResource: item.link ?? "",
+            webViewType: WebViewType.URL,
+            showTitle: true,
+            title: item.title,
+          ),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(top: 5.r, bottom: 5.r, left: 10.r, right: 10.r),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:wan_android/common_ui/web/webview_page.dart';
+import 'package:wan_android/common_ui/web/webview_widget.dart';
 import 'package:wan_android/pages/auth/login_page.dart';
 import 'package:wan_android/pages/auth/register_page.dart';
-import 'package:wan_android/pages/knowledge/detail/knowledg_detail_tab_page.dart';
+import 'package:wan_android/pages/knowledge/detail/knowledge_detail_tab_page.dart';
 import 'package:wan_android/pages/search/search_page.dart';
 import 'package:wan_android/pages/tab_page.dart';
-import 'package:wan_android/pages/web_view_page.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -12,7 +13,10 @@ class Routes {
       case RoutePath.tab:
         return pageRoute(TabPage(), settings: settings);
       case RoutePath.webViewPage:
-        return pageRoute(WebViewPage(title: "跳转信息"), settings: settings);
+        return pageRoute(
+          WebViewPage(loadResource: "", webViewType: WebViewType.URL),
+          settings: settings,
+        );
       case RoutePath.loginPage:
         return pageRoute(LoginPage(), settings: settings);
       case RoutePath.registerPage:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:wan_android/pages/knowledge/detail/knowledg_detail_tab_page.dart';
+import 'package:wan_android/pages/knowledge/detail/knowledge_detail_tab_page.dart';
 import 'package:wan_android/pages/knowledge/knowledge_vm.dart';
 import 'package:wan_android/repository/data/knowledge_list_data.dart';
 import 'package:wan_android/utils/route_utils.dart';

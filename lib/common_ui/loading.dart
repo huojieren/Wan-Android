@@ -5,7 +5,7 @@ import 'package:oktoast/oktoast.dart';
 class Loading {
   Loading._();
 
-  static Future showLoading() async {
+  static Future showLoading({Duration duration = const Duration(days: 1)}) async {
     showToastWidget(
       Container(
         color: Colors.transparent,
@@ -25,7 +25,7 @@ class Loading {
         ),
       ),
       handleTouch: true,
-      duration: Duration(days: 1),
+      duration: duration,
     );
   }
 

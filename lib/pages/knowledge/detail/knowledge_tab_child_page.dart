@@ -4,8 +4,11 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android/common_ui/common_style.dart';
 import 'package:wan_android/common_ui/smart_refresh/smart_refresh_widget.dart';
+import 'package:wan_android/common_ui/web/webview_page.dart';
+import 'package:wan_android/common_ui/web/webview_widget.dart';
 import 'package:wan_android/pages/knowledge/detail/knowledge_detail_vm.dart';
 import 'package:wan_android/repository/data/knowledge_detail_list_data.dart';
+import 'package:wan_android/utils/route_utils.dart';
 
 class KnowledgeTabChildPage extends StatefulWidget {
   const KnowledgeTabChildPage({super.key, this.cid});
@@ -44,9 +47,23 @@ class _KnowledgeTabChildPageState extends State<KnowledgeTabChildPage> {
                 refreshOrLoad(true);
               },
               child: ListView.builder(
-                itemCount: viewModel.detailList?.length ?? 0,
+                itemCount: viewModel.detailList.length,
                 itemBuilder: (context, index) {
-                  return _item(viewModel.detailList[index], onTap: () {});
+                  var item = viewModel.detailList[index];
+                  return _item(
+                    viewModel.detailList[index],
+                    onTap: () {
+                      RouteUtils.push(
+                        context,
+                        WebViewPage(
+                          webViewType: WebViewType.URL,
+                          loadResource: item.link ?? "",
+                          showTitle: true,
+                          title: item.title,
+                        ),
+                      );
+                    },
+                  );
                 },
               ),
             );
