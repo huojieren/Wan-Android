@@ -4,6 +4,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:wan_android/common_ui/loading.dart';
 import 'package:wan_android/common_ui/smart_refresh/smart_refresh_widget.dart';
 import 'package:wan_android/pages/search/search_vm.dart';
 import 'package:wan_android/utils/route_utils.dart';
@@ -26,7 +27,8 @@ class _SearchPageState extends State<SearchPage> {
   void initState() {
     super.initState();
     textController = TextEditingController(text: widget.keyword);
-    viewModel.search(keyword: widget.keyword);
+    Loading.showLoading();
+    refreshOrLoad(false);
   }
 
   @override
@@ -55,20 +57,22 @@ class _SearchPageState extends State<SearchPage> {
               ),
               Consumer<SearchViewModel>(
                 builder: (context, vm, child) {
-                  return SmartRefreshWidget(
-                    controller: refreshController,
-                    onRefresh: () async {
-                      refreshOrLoad(false);
-                    },
-                    onLoading: () async {
-                      refreshOrLoad(true);
-                    },
-
-                    child: ListView.builder(
-                      itemCount: vm.searchList?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        return _listItem(vm.searchList?[index].title, () {});
+                  return Expanded(
+                    child: SmartRefreshWidget(
+                      controller: refreshController,
+                      onRefresh: () async {
+                        refreshOrLoad(false);
                       },
+                      onLoading: () async {
+                        refreshOrLoad(true);
+                      },
+
+                      child: ListView.builder(
+                        itemCount: vm.searchList?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return _listItem(vm.searchList?[index].title, () {});
+                        },
+                      ),
                     ),
                   );
                 },
@@ -87,6 +91,7 @@ class _SearchPageState extends State<SearchPage> {
       } else {
         refreshController.refreshCompleted();
       }
+      Loading.dismissAll();
     });
   }
 
