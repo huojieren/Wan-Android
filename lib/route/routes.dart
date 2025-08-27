@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wan_android/common_ui/web/webview_page.dart';
 import 'package:wan_android/common_ui/web/webview_widget.dart';
+import 'package:wan_android/pages/about_us/about_us_page.dart';
 import 'package:wan_android/pages/auth/login_page.dart';
 import 'package:wan_android/pages/auth/register_page.dart';
 import 'package:wan_android/pages/knowledge/detail/knowledge_detail_tab_page.dart';
@@ -28,6 +29,8 @@ class Routes {
         return pageRoute(SearchPage(), settings: settings);
       case RoutePath.myCollectsPage:
         return pageRoute(MyCollectsPage(), settings: settings);
+      case RoutePath.aboutUsPage:
+        return pageRoute(AboutUsPage(), settings: settings);
     }
     return pageRoute(
       Scaffold(
@@ -63,4 +66,5 @@ class RoutePath {
   static const String detailKnowledgePage = "/detail_knowledge_page";
   static const String searchPage = "/search_page";
   static const String myCollectsPage = "/my_collects_page";
+  static const String aboutUsPage = "/about_us_page";
 }

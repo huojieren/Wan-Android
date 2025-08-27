@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android/common_ui/loading.dart';
+import 'package:wan_android/pages/about_us/about_us_page.dart';
 import 'package:wan_android/pages/auth/login_page.dart';
 import 'package:wan_android/pages/my_collects/my_collects_page.dart';
 import 'package:wan_android/pages/personal/personal_vm.dart';
@@ -44,8 +45,12 @@ class _PersonalPageState extends State<PersonalPage> {
               _settingsItem("我的收藏", () {
                 RouteUtils.push(context, MyCollectsPage());
               }),
-              _settingsItem("检查更新", () {}),
-              _settingsItem("关于我们", () {}),
+              _settingsItem("检查更新", () {
+                //TODO 实现检查更新功能
+              }),
+              _settingsItem("关于我们", () {
+                RouteUtils.push(context, AboutUsPage());
+              }),
               Consumer<PersonalViewModel>(
                 builder: (context, viewModel, child) {
                   if (viewModel.shouldLogin) {
